@@ -1,2 +1,3 @@
 # FS-JS-QAP2_JonIvany
-QAP 2 for Javascript fullstack course by Jonathan Ivany
+QAP 2 for Fullstack Java
+Completed by Jonathan Ivany
