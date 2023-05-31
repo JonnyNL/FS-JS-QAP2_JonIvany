@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&display=swap");
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  margin-top: 1.5em;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 64px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  overflow: hidden;
+  border-color: rgba(255, 255, 255, 0.568);
+  border-style: double;
+}
+
+.navbar video {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 1;
+}
+
+.nav-links {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center; /* Center the nav links horizontally */
+  align-items: center;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.85em;
+  transition: color 0.3s; /* Add transition effect for smooth color change */
+  font-family: "Fuzzy Bubbles", cursive;
+}
+
+.nav-links a:hover {
+  color: rgba(110, 108, 108, 0.178); /* Change the color on hover */
+}
+
+body {
+  background-image: url(../pics/index.png);
+  margin: 0; /* Remove default body margin */
+}

@@ -1,34 +1,72 @@
-// Import http module to create server
 const http = require("http");
+const fs = require("fs");
+const path = require("path");
 
-// Create server using createServer()
 const server = http.createServer((request, response) => {
-  // Use a switch statement to handle routing
-  switch (request.url) {
-    case "/":
-      response.write("Home page");
-      console.log("User visited the home page");
-      break;
-    case "/about":
-      response.write("About page");
-      console.log("User has visited the about page");
-      break;
-    case "/contact":
-      response.write("Contact page");
-      console.log("User has visited the contact page");
-      break;
+  const ext = path.extname(request.url);
 
-    default:
-      response.write("404: Page Not Found");
-      console.log("User tried to visit unknown page: " + request.url);
-      break;
+  if (ext === "") {
+    // it's a route, not a file
+    switch (request.url) {
+      case "/":
+        serveStaticFile(response, "views/index.html", "text/html");
+        break;
+      case "/weather":
+        serveStaticFile(response, "views/weather.html", "text/html");
+        break;
+      case "/movies":
+        serveStaticFile(response, "views/movies.html", "text/html");
+        break;
+      default:
+        response.writeHead(404, { "Content-Type": "text/html" });
+        response.end("404: Page Not Found");
+        console.log("User tried to visit an unknown page: " + request.url);
+        break;
+    }
+  } else {
+    // it's a file, serve it
+    let contentType;
+
+    switch (ext) {
+      case ".css":
+        contentType = "text/css";
+        break;
+      case ".png":
+        contentType = "image/png";
+        break;
+      case ".jpg":
+      case ".jpeg":
+        contentType = "image/jpeg";
+        break;
+      case ".html":
+        contentType = "text/html";
+        break;
+      case ".js":
+        contentType = "text/javascript";
+        break;
+      // add more file types if needed
+      default:
+        contentType = "application/octet-stream";
+        break;
+    }
+
+    serveStaticFile(response, request.url, contentType);
   }
-  // End the response process
-  response.end();
 });
 
-// Listen to port 3000 for connections
-server.listen(3000);
+function serveStaticFile(response, filePath, contentType) {
+  const fullPath = path.join(__dirname, filePath);
 
-// Log when server has started
+  fs.readFile(fullPath, (err, data) => {
+    if (err) {
+      response.statusCode = 500;
+      response.end(`Error: ${err}`);
+    } else {
+      response.writeHead(200, { "Content-Type": contentType });
+      response.end(data);
+    }
+  });
+}
+
+server.listen(3000);
 console.log("Server running on port 3000");
