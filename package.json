@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/JonnyNL/FS-JS-QAP2_JonIvany/issues"
   },
-  "homepage": "https://github.com/JonnyNL/FS-JS-QAP2_JonIvany#readme"
+  "homepage": "https://github.com/JonnyNL/FS-JS-QAP2_JonIvany#readme",
+  "dependencies": {}
 }
