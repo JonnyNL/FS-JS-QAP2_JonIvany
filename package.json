@@ -1,0 +1,19 @@
+{
+  "name": "fs-js-qap2_jonivany",
+  "version": "1.0.0",
+  "description": "QAP 2 for Fullstack Java\r Completed by Jonathan Ivany",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonnyNL/FS-JS-QAP2_JonIvany.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonnyNL/FS-JS-QAP2_JonIvany/issues"
+  },
+  "homepage": "https://github.com/JonnyNL/FS-JS-QAP2_JonIvany#readme"
+}
