@@ -4,26 +4,31 @@
 const fs = require("fs");
 const path = require("path");
 
+// Handler for index page
 function indexPage(path, response) {
   if (DEBUG) console.log("index.html page was requested.");
   displayFile(path, "text/html", response);
 }
 
+// Handler for movie page
 function moviePage(path, response) {
   if (DEBUG) console.log("index.html page was requested.");
   displayFile(path, "text/html", response);
 }
 
+// Handler for weather page
 function weatherPage(path, response) {
   if (DEBUG) console.log("index.html page was requested.");
   displayFile(path, "text/html", response);
 }
 
+// Handler for not found page
 function notFoundPage(path, response) {
   if (DEBUG) console.log("Unknown page was requested.");
   displayFile(path, "text/html", response);
 }
 
+// Handler for serving static files
 function handleStaticFile(request, response) {
   const filePath = path.join(process.cwd(), "views", request.url);
   const contentType = getContentType(filePath);
@@ -31,6 +36,7 @@ function handleStaticFile(request, response) {
   displayFile(filePath, contentType, response);
 }
 
+// Get the content type based on file extension
 function getContentType(filePath) {
   const extname = path.extname(filePath);
   switch (extname) {
@@ -56,6 +62,7 @@ function getContentType(filePath) {
   }
 }
 
+// Read and display the file contents
 function displayFile(filePath, contentType, response) {
   fs.readFile(filePath, function (err, data) {
     if (err) {

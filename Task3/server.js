@@ -1,10 +1,13 @@
 // Author: Jonathan Ivany
 // Date: 2023-05-29
 
-// We need the http module to create an HTTP server
+// load http module to create server
 const http = require("http");
+// load file system to for getting html doc
 const fs = require("fs");
+// load event emitter to add listeners
 const EventEmitter = require("events");
+// load writeToLog function from logEvent.js to log user input
 const { writeToLog } = require("./logEvents");
 // Load routes file we made for routing
 const routes = require("./routes.js");
